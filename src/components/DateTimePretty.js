@@ -10,13 +10,12 @@ function DateTimePretty(WrappedComponent, data) {
         }
 
         handleChangeDate(date) {
-            const currentDate = new Date('2018-08-31 13:26:00');
+            const currentDate = new Date('2018-03-03 13:32:00');
             let deys = moment(currentDate).diff(moment(date), 'days'),
-                h5 = moment(currentDate).diff(moment(date), 'hours'),
-                m12 = moment(currentDate).diff(moment(date), 'minutes')
-            console.log(date, deys, h5, m12);
+                min = moment(currentDate).diff(moment(date), 'minutes')
+            console.log(date, deys, min);
 
-            return m12 < 12 ? '12 минут назад' : h5 < 5 ? '5 часов назад' : `${deys} дней назад`
+            return min < 60 ? '12 минут назад' : 60<min && deys===0 ? '5 часов назад' : `${deys} дней назад`
         }
 
         render() {
